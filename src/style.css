@@ -1,18 +1,16 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
 }
 
 html,
-body
-{
+body {
     height: 100vh;
     font-family: 'Poppins';
+    background: rgb(24, 24, 24);
 }
 
-.webgl
-{
+.webgl {
     position: fixed;
     top: 0;
     left: 0;
