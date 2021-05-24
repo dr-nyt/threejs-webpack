@@ -122,22 +122,21 @@ const onDocumentMouseMove = (event) => {
 }
 document.addEventListener('mousemove', onDocumentMouseMove);
 
-const ogScaleX = sphere.scale.x;
-const ogScaleY = sphere.scale.y;
+const ogRadius = 1;
 window.addEventListener('scroll', (event) => {
-    sphere.scale.x = ogScaleX + (window.scrollY * 0.01);
-    sphere.scale.y = ogScaleY + (window.scrollY * 0.01);
+    sphere.scale.x = Math.min(ogRadius + (window.scrollY * 0.001), 2);
+    sphere.scale.y = Math.min(ogRadius + (window.scrollY * 0.001), 2);
+    sphere.scale.z = Math.min(ogRadius + (window.scrollY * 0.001), 2);
 })
 
 const clock = new THREE.Clock()
 const tick = () => {
-    targetX = mouseX * 0.001;
-    targetY = mouseY * 0.001;
+    targetX = mouseX * 0.01;
+    targetY = mouseY * 0.01;
 
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    sphere.rotation.y = .5 * elapsedTime
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y);
     sphere.rotation.x += .5 * (targetY - sphere.rotation.x);
