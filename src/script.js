@@ -70,13 +70,14 @@ const sphere = new THREE.Mesh(geometry, material)
 scene.add(sphere)
 
 // Lights
-const pointLight = new THREE.PointLight(0x65ff, 10)
-pointLight.position.set(10, -8, -3);
+const pointLight = new THREE.PointLight(0x0000ff, 5)
+pointLight.position.set(2, 5, -3);
 scene.add(pointLight)
 
-const pointLight2 = new THREE.PointLight(0xff0000, 1.92)
-pointLight2.position.set(-10, 5, -2);
+const pointLight2 = new THREE.PointLight(0xff0000, 1.06)
+pointLight2.position.set(-6, -3, 5);
 scene.add(pointLight2)
+pointLight2.intensity
 
 const pointLightHelper = new THREE.PointLightHelper(pointLight2, .5)
 scene.add(pointLightHelper)
@@ -109,39 +110,12 @@ redLight.addColor(light2Color, "color").onChange(() => {
 })
 
 //Animate
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-const windowHalfX = window.innerWidth / 2;
-const windowHalfY = window.innerHeight / 2;
-
-const onDocumentMouseMove = (event) => {
-    mouseX = (event.clientX - windowHalfX);
-    mouseY = (event.clientY - windowHalfY);
-}
-document.addEventListener('mousemove', onDocumentMouseMove);
-
-const ogScaleX = sphere.scale.x;
-const ogScaleY = sphere.scale.y;
-window.addEventListener('scroll', (event) => {
-    sphere.scale.x = ogScaleX + (window.scrollY * 0.01);
-    sphere.scale.y = ogScaleY + (window.scrollY * 0.01);
-})
-
 const clock = new THREE.Clock()
 const tick = () => {
-    targetX = mouseX * 0.001;
-    targetY = mouseY * 0.001;
-
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
     sphere.rotation.y = .5 * elapsedTime
-
-    sphere.rotation.y += .5 * (targetX - sphere.rotation.y);
-    sphere.rotation.x += .5 * (targetY - sphere.rotation.x);
-    sphere.position.z += .5 * (targetY - sphere.rotation.x);
 
     // Update Orbital Controls
     // controls.update()
