@@ -89,25 +89,11 @@ blueLight.add(pointLight.position, "y", -10, 10, 1)
 blueLight.add(pointLight.position, "z", -10, 10, 1)
 blueLight.add(pointLight, "intensity", 0, 10, 0.01)
 
-const lightColor = {
-    color: 0x0000ff
-}
-blueLight.addColor(lightColor, "color").onChange(() => {
-    pointLight.color.set(lightColor.color)
-})
-
 const redLight = gui.addFolder("Red light")
 redLight.add(pointLight2.position, "x", -10, 10, 1)
 redLight.add(pointLight2.position, "y", -10, 10, 1)
 redLight.add(pointLight2.position, "z", -10, 10, 1)
 redLight.add(pointLight2, "intensity", 0, 10, 0.01)
-
-const light2Color = {
-    color: 0xff0000
-}
-redLight.addColor(light2Color, "color").onChange(() => {
-    pointLight2.color.set(light2Color.color)
-})
 
 //Animate
 const clock = new THREE.Clock()
